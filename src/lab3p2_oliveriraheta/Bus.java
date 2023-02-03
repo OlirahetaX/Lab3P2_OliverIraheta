@@ -22,6 +22,7 @@ public class Bus extends Vehiculos{
 
     public void setPasajeros(int pasajeros) {
         this.pasajeros = pasajeros;
+        setTipo(pasajeros);
     }
 
     public String getTipo() {

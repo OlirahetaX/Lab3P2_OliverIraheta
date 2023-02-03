@@ -94,7 +94,6 @@ public class Lab3P2_OliverIraheta {
     private static void cv() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-//
 
     private static void vehi() {
         System.out.println("""
@@ -109,8 +108,17 @@ public class Lab3P2_OliverIraheta {
                 crearVehi();
             case 2 ->
                 modVehi();
-            case 3 ->
-                elimVehi();
+            case 3 -> {
+                for (Vehiculos c : vehiculoss) {
+                    System.out.println(vehiculoss.indexOf(c) + 1 + ") " + c.getMarca()+ " -> " + c.getModelo()+ "\n");
+                }
+                System.out.println("Ingrese posicion a eliminar");
+                rm = new Scanner(System.in);
+                int pos = rm.nextInt();
+                
+                vehiculoss.remove(pos);
+            }
+
         }
     }
 
@@ -346,22 +354,22 @@ public class Lab3P2_OliverIraheta {
                 System.out.println("Ingrese descripcion del Motor");
                 rm = new Scanner(System.in);
                 String descripcionMotor = rm.nextLine();
-                ((Carro)vehiculoss.get(pos)).setDescripcionMotor(descripcionMotor);
+                ((Carro) vehiculoss.get(pos)).setDescripcionMotor(descripcionMotor);
             }
             case 2 -> {
                 System.out.println("Ingrese velocidad Max");
                 rm = new Scanner(System.in);
                 double veloMax = rm.nextDouble();
-                ((Carro)vehiculoss.get(pos)).setVeloMax(veloMax);
+                ((Carro) vehiculoss.get(pos)).setVeloMax(veloMax);
             }
             case 3 -> {
                 System.out.println("Ingrese #puertas");
                 rm = new Scanner(System.in);
                 int puertas = rm.nextInt();
-                ((Carro)vehiculoss.get(pos)).setPuertas(puertas);
+                ((Carro) vehiculoss.get(pos)).setPuertas(puertas);
             }
         }
- 
+
     }
 
     private static void modCamion() {
@@ -374,9 +382,123 @@ public class Lab3P2_OliverIraheta {
         rm = new Scanner(System.in);
         int pos = rm.nextInt();
 
-        System.out.println("Mod: 1- descripcion del Motor   2- velocidad Max    3- #puertas");
+        System.out.println("Mod: 1- volumen maximo de carga   2- altura    3- retroexcavadora");
         rm = new Scanner(System.in);
         int w = rm.nextInt();
+
+        switch (w) {
+            case 1 -> {
+                System.out.println("Ingrese volumen maximo de carga");
+                rm = new Scanner(System.in);
+                double maxCarga = rm.nextDouble();
+                ((Camion) vehiculoss.get(pos)).setMaxCarga(maxCarga);
+            }
+            case 2 -> {
+                System.out.println("Ingrese altura");
+                rm = new Scanner(System.in);
+                double altura = rm.nextDouble();
+                ((Camion) vehiculoss.get(pos)).setAltura(altura);
+
+            }
+            case 3 -> {
+                System.out.println("Tiene retroexcavadora? 1- Si      2- No");
+                rm = new Scanner(System.in);
+                int s = rm.nextInt();
+
+                if (s == 1) {
+                    ((Camion) vehiculoss.get(pos)).setRetro(true);
+
+                } else {
+                    ((Camion) vehiculoss.get(pos)).setRetro(false);
+
+                }
+            }
+
+        }
+
     }
 
+    private static void modBus() {
+        for (Vehiculos v : vehiculoss) {
+            if (v instanceof Bus) {
+                System.out.println(vehiculoss.indexOf(v) + ") " + v.getMarca() + " -> " + v.getModelo() + "\n");
+            }
+        }
+        System.out.println("Ingrese posicion a mod");
+        rm = new Scanner(System.in);
+        int pos = rm.nextInt();
+
+        System.out.println("Ingrese Cantidad Max de Pasajeros");
+        rm = new Scanner(System.in);
+        int pasajeros = rm.nextInt();
+
+        ((Bus) vehiculoss.get(pos)).setPasajeros(pasajeros);
+    }
+
+    private static void modMoto() {
+        for (Vehiculos v : vehiculoss) {
+            if (v instanceof Moto) {
+                System.out.println(vehiculoss.indexOf(v) + ") " + v.getMarca() + " -> " + v.getModelo() + "\n");
+            }
+        }
+        System.out.println("Ingrese posicion a mod");
+        rm = new Scanner(System.in);
+        int pos = rm.nextInt();
+
+        System.out.println("Mod: 1- Desplazamiento de Motor   2- electrica  ");
+        rm = new Scanner(System.in);
+        int w = rm.nextInt();
+
+        if (w == 1) {
+            System.out.println("Ingrese Desplazamiento de Motor");
+            rm = new Scanner(System.in);
+            String desplazamientoMotor = rm.nextLine();
+            ((Moto) vehiculoss.get(pos)).setDesplazamientoMotor(desplazamientoMotor);
+        } else {
+            System.out.println("Es electrica? 1- Si      2- No");
+            rm = new Scanner(System.in);
+            int s = rm.nextInt();
+            if (s == 1) {
+                ((Moto) vehiculoss.get(pos)).setElectrica(true);
+            } else {
+                ((Moto) vehiculoss.get(pos)).setElectrica(false);
+            }
+        }
+
+    }
+
+    private static void modBici() {
+        for (Vehiculos v : vehiculoss) {
+            if (v instanceof Bici) {
+                System.out.println(vehiculoss.indexOf(v) + ") " + v.getMarca() + " -> " + v.getModelo() + "\n");
+            }
+        }
+        System.out.println("Ingrese posicion a mod");
+        rm = new Scanner(System.in);
+        int pos = rm.nextInt();
+
+        System.out.println("Mod: 1- descripcion   2- Tipo    3- Radio de la rueda");
+        rm = new Scanner(System.in);
+        int w = rm.nextInt();
+        switch (w) {
+            case 1 -> {
+                System.out.println("Ingrese descripcion");
+                rm = new Scanner(System.in);
+                String descripcion = rm.nextLine();
+                ((Bici) vehiculoss.get(pos)).setDescripcion(descripcion);
+            }
+            case 2 -> {
+                System.out.println("Ingrese tipo");
+                rm = new Scanner(System.in);
+                String tipo = rm.nextLine();
+                ((Bici) vehiculoss.get(pos)).setTipo(tipo);
+            }
+            case 3 -> {
+                System.out.println("Ingrese radio de la Rueda");
+                rm = new Scanner(System.in);
+                double radioRueda = rm.nextDouble();
+                ((Bici) vehiculoss.get(pos)).setRadioRueda(radioRueda);
+            }
+        }
+    }
 }
