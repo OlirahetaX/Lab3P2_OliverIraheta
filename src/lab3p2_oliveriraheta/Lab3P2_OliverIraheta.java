@@ -7,7 +7,7 @@ public class Lab3P2_OliverIraheta {
 
     static ArrayList<Vehiculos> vehiculoss = new ArrayList();
     static ArrayList<Cliente> clientess = new ArrayList();
-    static ArrayList<Concesionaria> consecionariass = new ArrayList();
+    static ArrayList<Concesionaria> concesionariass = new ArrayList();
 
     static Scanner rm = new Scanner(System.in);
 
@@ -84,10 +84,23 @@ public class Lab3P2_OliverIraheta {
         rm = new Scanner(System.in);
         int saldo = rm.nextInt();
 
-        consecionariass.add(new Concesionaria(name, Direccion, ID, saldo));
+        concesionariass.add(new Concesionaria(name, Direccion, ID, saldo));
     }
 
     private static void modConse() {
+        for (Concesionaria c : concesionariass) {
+            System.out.println(concesionariass.indexOf(c)+1+c.getNombre()+" -> "+c.getDireccion()+"\n");
+        }
+        System.out.println("Ingrese posicion a mod");
+        rm = new Scanner(System.in);
+        int pos = rm.nextInt();
+        
+        System.out.println("Ingrese nueva direccion");
+        rm = new Scanner(System.in);
+        String dir = rm.next();
+        
+        concesionariass.get(pos-1).setDireccion(dir);
+        
     }
 
     private static void elimConse() {
