@@ -1,13 +1,44 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package lab3p2_oliveriraheta;
 
-/**
- *
- * @author Oliver Iraheta
- */
-public class Bus {
+
+public class Bus extends Vehiculos{
+    private int pasajeros;
+    private String tipo;
+
+    public Bus() {
+        super();
+    }
+
+    public Bus(int pasajeros, String color, String marca, String modelo, int anioFab, int precio, int llantas) {
+        super(color, marca, modelo, anioFab, precio, llantas);
+        this.pasajeros = pasajeros;
+        setTipo(pasajeros);
+    }
+
+    public int getPasajeros() {
+        return pasajeros;
+    }
+
+    public void setPasajeros(int pasajeros) {
+        this.pasajeros = pasajeros;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int pasajeros) {
+        if (pasajeros<51) {
+            tipo = "Rapidito";
+        }else{
+            tipo = "De Ruta";
+        } 
+    }
+
+    @Override
+    public String toString() {
+        return "Bus{" + "pasajeros=" + pasajeros + ", tipo=" + tipo + '}';
+    }
     
 }

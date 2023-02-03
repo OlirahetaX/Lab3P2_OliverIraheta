@@ -42,6 +42,30 @@ public class Vehiculos {
         return llantas;
     }
 
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public void setAnioFab(int anioFab) {
+        this.anioFab = anioFab;
+    }
+
+    public void setPrecio(int precio) {
+        this.precio = precio;
+    }
+
+    public void setLlantas(int llantas) {
+        this.llantas = llantas;
+    }
+
     @Override
     public String toString() {
         return "Vehiculos{" + "color=" + color + ", marca=" + marca + ", modelo=" + modelo + ", anioFab=" + anioFab + ", precio=" + precio + ", llantas=" + llantas + '}';
