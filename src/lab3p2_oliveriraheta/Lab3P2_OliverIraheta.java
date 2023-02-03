@@ -56,7 +56,39 @@ public class Lab3P2_OliverIraheta {
     }
 
     private static void cliente() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println("""
+                           1- Crear
+                           2- Elimnar""");
+        rm = new Scanner(System.in);
+        int opc = rm.nextInt();
+
+        switch (opc) {
+            case 1 -> {
+                System.out.println("\nIngrese nombre");
+                rm = new Scanner(System.in);
+                String name = rm.nextLine();
+
+                System.out.println("\nIngrese ID");
+                rm = new Scanner(System.in);
+                int ID = rm.nextInt();
+
+                System.out.println("\nIngrese saldo");
+                rm = new Scanner(System.in);
+                int saldo = rm.nextInt();
+
+                clientess.add(new Cliente(ID, saldo, name));
+            }
+            case 2 -> {
+                for (Cliente c : clientess) {
+                    System.out.println(clientess.indexOf(c) + 1 + c.getName()+ "\n");
+                }
+                System.out.println("Ingrese posicion a eliminar");
+                rm = new Scanner(System.in);
+                int pos = rm.nextInt();
+
+                clientess.remove(pos - 1);
+            }
+        }
     }
 
     private static void cv() {
@@ -89,21 +121,30 @@ public class Lab3P2_OliverIraheta {
 
     private static void modConse() {
         for (Concesionaria c : concesionariass) {
-            System.out.println(concesionariass.indexOf(c)+1+c.getNombre()+" -> "+c.getDireccion()+"\n");
+            System.out.println(concesionariass.indexOf(c) + 1 + c.getNombre() + " -> " + c.getDireccion() + "\n");
         }
+
         System.out.println("Ingrese posicion a mod");
         rm = new Scanner(System.in);
         int pos = rm.nextInt();
-        
+
         System.out.println("Ingrese nueva direccion");
         rm = new Scanner(System.in);
         String dir = rm.next();
-        
-        concesionariass.get(pos-1).setDireccion(dir);
-        
+
+        concesionariass.get(pos - 1).setDireccion(dir);
+
     }
 
     private static void elimConse() {
+        for (Concesionaria c : concesionariass) {
+            System.out.println(concesionariass.indexOf(c) + 1 + c.getNombre() + " -> " + c.getDireccion() + "\n");
+        }
+        System.out.println("Ingrese posicion a eliminar");
+        rm = new Scanner(System.in);
+        int pos = rm.nextInt();
+
+        concesionariass.remove(pos - 1);
     }
 
 }
