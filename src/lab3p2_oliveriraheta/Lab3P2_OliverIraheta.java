@@ -94,6 +94,7 @@ public class Lab3P2_OliverIraheta {
     private static void cv() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+//
 
     private static void vehi() {
         System.out.println("""
@@ -135,7 +136,7 @@ public class Lab3P2_OliverIraheta {
 
     private static void modConse() {
         for (Concesionaria c : concesionariass) {
-            System.out.println(concesionariass.indexOf(c) + 1 + c.getNombre() + " -> " + c.getDireccion() + "\n");
+            System.out.println(concesionariass.indexOf(c) + 1 + ") " + c.getNombre() + " -> " + c.getDireccion() + "\n");
         }
 
         System.out.println("Ingrese posicion a mod");
@@ -152,7 +153,7 @@ public class Lab3P2_OliverIraheta {
 
     private static void elimConse() {
         for (Concesionaria c : concesionariass) {
-            System.out.println(concesionariass.indexOf(c) + 1 + c.getNombre() + " -> " + c.getDireccion() + "\n");
+            System.out.println(concesionariass.indexOf(c) + 1 + ") " + c.getNombre() + " -> " + c.getDireccion() + "\n");
         }
         System.out.println("Ingrese posicion a eliminar");
         rm = new Scanner(System.in);
@@ -298,6 +299,84 @@ public class Lab3P2_OliverIraheta {
 
         concesionariass.get(pos).getConVehi().add(new Bus(pasajeros, color, marca, modelo, anioFab, precio, llantas));
 
+    }
+
+    private static void modVehi() {
+        System.out.println("""
+                           Mod:
+                           1- Carro
+                           2- Camion
+                           3- Bus
+                           4- Moto
+                           5- Bici""");
+        rm = new Scanner(System.in);
+        int d = rm.nextInt();
+
+        switch (d) {
+            case 1 ->
+                modcarro();
+            case 2 ->
+                modCamion();
+            case 3 ->
+                modBus();
+            case 4 ->
+                modMoto();
+            case 5 ->
+                modBici();
+            default ->
+                modVehi();
+        }
+    }
+
+    private static void modcarro() {
+        for (Vehiculos v : vehiculoss) {
+            if (v instanceof Carro) {
+                System.out.println(vehiculoss.indexOf(v) + ") " + v.getMarca() + " -> " + v.getModelo() + "\n");
+            }
+        }
+        System.out.println("Ingrese posicion a mod");
+        rm = new Scanner(System.in);
+        int pos = rm.nextInt();
+
+        System.out.println("Mod: 1- descripcion del Motor   2- velocidad Max    3- #puertas");
+        rm = new Scanner(System.in);
+        int w = rm.nextInt();
+        switch (w) {
+            case 1 -> {
+                System.out.println("Ingrese descripcion del Motor");
+                rm = new Scanner(System.in);
+                String descripcionMotor = rm.nextLine();
+                ((Carro)vehiculoss.get(pos)).setDescripcionMotor(descripcionMotor);
+            }
+            case 2 -> {
+                System.out.println("Ingrese velocidad Max");
+                rm = new Scanner(System.in);
+                double veloMax = rm.nextDouble();
+                ((Carro)vehiculoss.get(pos)).setVeloMax(veloMax);
+            }
+            case 3 -> {
+                System.out.println("Ingrese #puertas");
+                rm = new Scanner(System.in);
+                int puertas = rm.nextInt();
+                ((Carro)vehiculoss.get(pos)).setPuertas(puertas);
+            }
+        }
+ 
+    }
+
+    private static void modCamion() {
+        for (Vehiculos v : vehiculoss) {
+            if (v instanceof Camion) {
+                System.out.println(vehiculoss.indexOf(v) + ") " + v.getMarca() + " -> " + v.getModelo() + "\n");
+            }
+        }
+        System.out.println("Ingrese posicion a mod");
+        rm = new Scanner(System.in);
+        int pos = rm.nextInt();
+
+        System.out.println("Mod: 1- descripcion del Motor   2- velocidad Max    3- #puertas");
+        rm = new Scanner(System.in);
+        int w = rm.nextInt();
     }
 
 }
