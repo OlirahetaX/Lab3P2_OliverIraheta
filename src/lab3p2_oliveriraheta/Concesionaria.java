@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 public class Concesionaria {
     private String nombre,direccion;
-    private int ID,saldo;
+    private int ID;
+    private double saldo;
     private ArrayList<Vehiculos> conVehi  = new ArrayList();
     private ArrayList<Cliente> clientes  = new ArrayList();
 
@@ -44,11 +45,11 @@ public class Concesionaria {
         this.ID = ID;
     }
 
-    public int getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(int saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 

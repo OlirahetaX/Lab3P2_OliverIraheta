@@ -5,14 +5,15 @@ import java.util.ArrayList;
 
 
 public class Cliente {
-    private int id,saldo;
+    private int id;
+    private double saldo;
     private String name;
     private ArrayList<Vehiculos> Cvehi  = new ArrayList();
 
     public Cliente() {
     }
 
-    public Cliente(int id, int saldo, String name) {
+    public Cliente(int id, double saldo, String name) {
         this.id = id;
         this.saldo = saldo;
         this.name = name;
@@ -26,11 +27,11 @@ public class Cliente {
         this.id = id;
     }
 
-    public int getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
 
-    public void setSaldo(int saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
 

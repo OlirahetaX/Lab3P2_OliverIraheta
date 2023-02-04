@@ -75,7 +75,7 @@ public class Lab3P2_OliverIraheta {
 
                 System.out.println("\nIngrese saldo");
                 rm = new Scanner(System.in);
-                int saldo = rm.nextInt();
+                double saldo = rm.nextInt();
 
                 clientess.add(new Cliente(ID + clientess.size() + 1, saldo, name));
             }
@@ -96,25 +96,25 @@ public class Lab3P2_OliverIraheta {
         System.out.println("1- Comprar  2- Vender");
         rm = new Scanner(System.in);
         int x = rm.nextInt();
-        
+
         System.out.println("INGRESE POSICION DE PERSONA");
         for (Cliente c : clientess) {
-            System.out.println(clientess.indexOf(c)+1+") "+c);
+            System.out.println(clientess.indexOf(c) + 1 + ") " + c);
         }
         rm = new Scanner(System.in);
-        int cli = rm.nextInt()-1;
-        
-         System.out.println("Ingrese Consesionaria");
+        int cli = rm.nextInt() - 1;
+
+        System.out.println("Ingrese Consesionaria");
         for (Concesionaria c : concesionariass) {
-            System.out.println(concesionariass.indexOf(c)+1+") "+c);
+            System.out.println(concesionariass.indexOf(c) + 1 + ") " + c);
         }
         rm = new Scanner(System.in);
-        int conce = rm.nextInt()-1;
-        
-        if (x==1) {
-            comprar(cli,conce);
-        }else{
-            vender(cli,conce);
+        int conce = rm.nextInt() - 1;
+
+        if (x == 1) {
+            comprar(cli, conce);
+        } else {
+            vender(cli, conce);
         }
     }
 
@@ -196,12 +196,12 @@ public class Lab3P2_OliverIraheta {
     private static void crearVehi() {
         System.out.println("~~~~~~~~~~~~~~~~~~~~~");
         for (Concesionaria c : concesionariass) {
-            System.out.println(concesionariass.indexOf(c) + 1 +") "+ c.getNombre() + " -> " + c.getDireccion() + "\n");
+            System.out.println(concesionariass.indexOf(c) + 1 + ") " + c.getNombre() + " -> " + c.getDireccion() + "\n");
         }
 
         System.out.println("Ingrese posicion a de concesionaria agregar");
         rm = new Scanner(System.in);
-        int pos = rm.nextInt()-1;
+        int pos = rm.nextInt() - 1;
 
         System.out.println("\nIngrese color");
         rm = new Scanner(System.in);
@@ -526,29 +526,47 @@ public class Lab3P2_OliverIraheta {
         }
     }
 
-    private static void comprar(int cli,int conce) {
-       
+    private static void comprar(int cli, int conce) {
+
         System.out.println("Ingrese vehiculo a comprar");
-        for (Vehiculos v : concesionariass.get(conce).getConVehi()){
-            System.out.println(concesionariass.get(conce).getConVehi().indexOf(v)+1+") "+v);
+        for (Vehiculos v : concesionariass.get(conce).getConVehi()) {
+            System.out.println(concesionariass.get(conce).getConVehi().indexOf(v) + 1 + ") " + v);
         }
         rm = new Scanner(System.in);
-        int ve = rm.nextInt()-1;
-        
+        int ve = rm.nextInt() - 1;
+
         Vehiculos v = concesionariass.get(conce).getConVehi().get(ve);
-        
-        if (clientess.get(cli).getSaldo()>=v.getPrecio()) {
+
+        if (clientess.get(cli).getSaldo() >= v.getPrecio()+(v.getPrecio()*0.075)) {
             clientess.get(cli).getCvehi().add(v);
             concesionariass.get(conce).getConVehi().remove(v);
-            clientess.get(cli).setSaldo(clientess.get(cli).getSaldo()-v.getPrecio());
-            concesionariass.get(conce).setSaldo(concesionariass.get(conce).getSaldo()+v.getPrecio());
-        }else{
+            clientess.get(cli).setSaldo(clientess.get(cli).getSaldo() - (v.getPrecio()+(v.getPrecio()*0.075)));
+            concesionariass.get(conce).setSaldo(concesionariass.get(conce).getSaldo() + (v.getPrecio()+(v.getPrecio()*0.075)));
+            concesionariass.get(conce).getClientes().add(clientess.get(cli));
+            System.out.println(">>> VEHICULO COMPRADO <<<");
+        } else {
             System.out.println(">>> SALDO INSUFICIENTE <<<");
-            comprar(cli,conce);
         }
     }
 
-    private static void vender(int cli,int conce) {
+    private static void vender(int cli, int conce) {
+        System.out.println("Ingrese Vehiculo a vender");
+        for (Vehiculos v : clientess.get(cli).getCvehi()) {
+            System.out.println(clientess.get(cli).getCvehi().indexOf(v) + 1 + ") " + v);
+        }
+        rm = new Scanner(System.in);
+        int ve = rm.nextInt() - 1;
         
+        double saldo = concesionariass.get(conce).getSaldo();
+        Vehiculos v = clientess.get(cli).getCvehi().get(ve);
+        
+        if (v.getPrecio()<=saldo) {
+            concesionariass.get(conce).getConVehi().add(v);
+            clientess.get(cli).getCvehi().remove(ve);
+            concesionariass.get(conce).setSaldo(saldo-v.precio);
+            clientess.get(cli).setSaldo(clientess.get(cli).getSaldo()+v.precio);
+        }else{
+            System.out.println(">>> SALDO INSUFICIENTE <<<");
+        }
     }
 }
