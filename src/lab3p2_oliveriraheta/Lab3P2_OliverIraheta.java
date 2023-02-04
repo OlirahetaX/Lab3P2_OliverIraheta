@@ -32,8 +32,12 @@ public class Lab3P2_OliverIraheta {
                     cliente();
                 case 3 ->
                     vehi();
-                case 4 ->
-                    cv();
+                case 4 ->{
+                    if (!concesionariass.isEmpty() && !clientess.isEmpty()) {
+                        cv();
+                    }
+                }
+                    
             }
         }
     }
