@@ -33,7 +33,7 @@ public class Moto extends Vehiculos{
 
     @Override
     public String toString() {
-        return "Moto{" + "desplazamientoMotor=" + desplazamientoMotor + ", electrica=" + electrica + '}';
+        return "\n                 -> [MOTO] Desplazamiento DE Motor = " + desplazamientoMotor + " / Electrica = " + electrica ;
     }
     
 }

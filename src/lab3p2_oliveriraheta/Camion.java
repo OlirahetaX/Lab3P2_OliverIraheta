@@ -43,7 +43,7 @@ public class Camion extends Vehiculos{
 
     @Override
     public String toString() {
-        return "Camion{" + "maxCarga=" + maxCarga + ", altura=" + altura + ", retro=" + retro + '}';
+        return "\n                 -> [CAMION]" + " Max Carga = " + maxCarga + " / Altura = " + altura + " / Retro = " + retro;
     }
 
     

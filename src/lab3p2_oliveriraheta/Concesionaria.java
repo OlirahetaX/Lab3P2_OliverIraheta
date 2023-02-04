@@ -70,7 +70,7 @@ public class Concesionaria {
 
     @Override
     public String toString() {
-        return "Concesionaria{" + "nombre=" + nombre + ", direccion=" + direccion + ", ID=" + ID + ", saldo=" + saldo + ", conVehi=" + conVehi + ", clientes=" + clientes + '}';
+        return "Nombre = " + nombre + " / Direccion = " + direccion + " / ID = " + ID + " / Saldo = " + saldo + " / Vehiculos = " + conVehi + " / Clientes = " + clientes ;
     }
     
 }

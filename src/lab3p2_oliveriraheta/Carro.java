@@ -43,7 +43,7 @@ public class Carro extends Vehiculos{
 
     @Override
     public String toString() {
-        return "Carro{" + "puertas=" + puertas + ", descripcionMotor=" + descripcionMotor + ", veloMax=" + veloMax + '}';
+        return "\n                 -> [Carro] " + " Puertas = " + puertas + " / Descripcion DEL Motor = " + descripcionMotor + " / Velocidad Maxima = " + veloMax;
     }
     
     

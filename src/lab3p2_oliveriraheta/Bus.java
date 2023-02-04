@@ -39,7 +39,7 @@ public class Bus extends Vehiculos{
 
     @Override
     public String toString() {
-        return "Bus{" + "pasajeros=" + pasajeros + ", tipo=" + tipo + '}';
+        return "\n                 -> [BUS] Pasajeros = " + pasajeros + " / Tipo = " + tipo ;
     }
     
 }

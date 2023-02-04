@@ -43,7 +43,7 @@ public class Bici extends Vehiculos{
 
     @Override
     public String toString() {
-        return "Bici{" + "descripcion=" + descripcion + ", tipo=" + tipo + ", radioRueda=" + radioRueda + '}';
+        return "\n                 -> [BICICLETA] Descripcion = " + descripcion + " / Tipo = " + tipo + " / Radio DE LA Rueda = " + radioRueda ;
     }
     
      
